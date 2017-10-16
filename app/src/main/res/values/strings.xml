@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GrumpyCat</string>
+    <string name="grumpy_cat_profile">Grumpy Cat profile</string>
 </resources>
