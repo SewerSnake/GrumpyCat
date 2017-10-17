@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     private Button button;
     private ProgressBar progressBar;
     private View online;
+    private CheckBox checkBox;
 
     private boolean onlineStatus = false;
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         online = findViewById(R.id.status);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        checkBox.setOnCheckedChangeListener(this);
     }
 
     public void onButtonClicked(View view) {
@@ -42,5 +47,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } , 1000);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        onlineStatus = b;
+
+        if (onlineStatus) {
+            online.setVisibility(View.VISIBLE);
+        } else {
+            online.setVisibility(View.INVISIBLE);
+        }
+
     }
 }
